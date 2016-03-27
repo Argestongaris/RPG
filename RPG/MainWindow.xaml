@@ -1,0 +1,212 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPG"
+        xmlns:ExternalClasses="clr-namespace:RPG.ExternalClasses" x:Class="RPG.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TabControl x:Name="tabControl">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF7A3323" Offset="1"/>
+                    <GradientStop Color="#FF4F5BE2"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
+            <TabItem Header="Stats">
+                <Grid Background="#FFE5E5E5">
+                    <DockPanel>
+                        <StackPanel HorizontalAlignment="Left">
+                            <DockPanel Margin="10,10,10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labLvl" Content="Lvl:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <Label x:Name="numLvl" Content="Lvl" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </DockPanel>
+                            <DockPanel Margin="10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labExp" Content="Exp:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <StackPanel>
+                                    <ProgressBar x:Name="ExpBar" Width="100" Height="10" Foreground="#FF3ADC58" Margin="0,10,0,0" Maximum="50" SmallChange="1"/>
+                                    <Label x:Name="numExp" Content="Lvl" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="9.333" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DockPanel>
+                            <DockPanel Margin="10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labHP" Content="HP:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <StackPanel>
+                                    <ProgressBar x:Name="HPBar" Width="100" Height="15" Foreground="#FFF30404" Value="100" Margin="0,6,0,0"/>
+                                    <Label x:Name="numHP" Content="Lvl" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="9.333" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DockPanel>
+                            <DockPanel Margin="10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labMP" Content="MP:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <StackPanel>
+                                    <ProgressBar x:Name="MPBar" Width="100" Height="15" Foreground="#FF010BD3" Value="100" Margin="0,6,0,0"/>
+                                    <Label x:Name="numMP" Content="Lvl" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="9.333" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DockPanel>
+                            <DockPanel Margin="10,10,10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labAtak" Content="Atak:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <Label x:Name="numAtak" Content="Nn" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </DockPanel>
+                            <DockPanel Margin="10,10,10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labDef" Content="Def:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <Label x:Name="numDef" Content="Nn" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </DockPanel>
+                            <Button x:Name="Akcja" Content="Akcja" Click="Akcja_Click"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <DockPanel>
+                                <Label Content="Skills" Width="80" Height="24"/>
+                                <Label Content="Skill Points:" Height="24"/>
+                                <Label x:Name="numSkillPoints" Content="Nn" Width="30" HorizontalAlignment="Left" Height="24"/>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Left">
+                                <Label x:Name="labAgil" Content="Agility:" Width="80"/>
+                                <Label x:Name="numAgil" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillAgil" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Tag="Agi" Click="AddSkill_Click"/>
+                                <ProgressBar x:Name="AgiBar" Value="3" Width="100" Height="10" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labDex" Content="Dexterity:" Width="80"/>
+                                <Label x:Name="numDex" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillDex" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Tag="Dex" Click="AddSkill_Click"/>
+                                <ProgressBar x:Name="DexBar" Value="3" Width="100" Height="10" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labEndu" Content="Endurance:" Width="80"/>
+                                <Label x:Name="numEndu" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillEndu" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Tag="Endu" Click="AddSkill_Click"/>
+                                <ProgressBar x:Name="EnduBar" Value="3" Width="100" Height="10" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labIntel" Content="Inteligence:" Width="80"/>
+                                <Label x:Name="numIntel" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillIntel" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Tag="Intel" Click="AddSkill_Click"/>
+                                <ProgressBar x:Name="IntelBar" Value="3" Width="100" Height="10" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labKnow" Content="Knowledge:" Width="80"/>
+                                <Label x:Name="numKnow" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillKnow" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Tag="Know" Click="AddSkill_Click"/>
+                                <ProgressBar x:Name="KnowBar" Value="3" Width="100" Height="10" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labLuck" Content="Luck:" Width="80"/>
+                                <Label x:Name="numLuck" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillLuck" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Tag="Luck" Click="AddSkill_Click"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labSpeed" Content="Speed:" Width="80"/>
+                                <Label x:Name="numSpeed" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillSpeed" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Tag="Speed" Click="AddSkill_Click"/>
+                                <ProgressBar x:Name="SpeedBar" Value="3" Width="100" Height="10" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labStam" Content="Stamina:" Width="80"/>
+                                <Label x:Name="numStam" Content="Nn" Width="35" HorizontalAlignment="Left"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labStr" Content="Strength:" Width="80"/>
+                                <Label x:Name="numStr" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillStr" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Tag="Str" Click="AddSkill_Click"/>
+                                <ProgressBar x:Name="StrBar" Value="3" Width="100" Height="10" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label x:Name="labWill" Content="Willpower:" Width="80"/>
+                                <Label x:Name="numWill" Content="Nn" Width="35"/>
+                                <Button x:Name="AddSkillWill" Content="+" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" FontSize="9.333" FontWeight="Bold" Width="17" Click="AddSkill_Click" Tag="Will"/>
+                                <ProgressBar x:Name="WillBar" Value="3" Width="100" Height="10" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Treasures">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel>
+                        <DockPanel Margin="10,10,10,0">
+                            <Image Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <Image.OpacityMask>
+                                    <ImageBrush/>
+                                </Image.OpacityMask>
+                            </Image>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Ruby:" Width="34" FontSize="10.667"/>
+                            <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </DockPanel>
+                        <DockPanel Margin="10,10,10,0">
+                            <Image Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Dimond:" FontSize="10.667"/>
+                            <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        </DockPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Fight">
+                <Grid Background="#FFE5E5E5">
+                    <DockPanel>
+                        <StackPanel Width="199" HorizontalAlignment="Left">
+                            <DockPanel Margin="10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labFightHP" Content="HP:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <StackPanel>
+                                    <ProgressBar Width="100" Height="15" Foreground="#FF3ADC58" Value="100" Margin="0,6,0,0"/>
+                                    <Label x:Name="numFightHP" Content="Lvl" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="9.333" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DockPanel>
+                            <DockPanel Margin="10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labFightMP" Content="MP:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <StackPanel>
+                                    <ProgressBar Width="100" Height="15" Foreground="#FF010BD3" Value="100" Margin="0,6,0,0"/>
+                                    <Label x:Name="numFightMP" Content="Lvl" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="9.333" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DockPanel>
+                            <DockPanel Margin="10,10,10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labFightAtak" Content="Atak:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <Label x:Name="numFightAtak" Content="Nn" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </DockPanel>
+                            <DockPanel Margin="10,10,10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labFightDef" Content="Def:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <Label x:Name="numFightDef" Content="Nn" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </DockPanel>
+                            <DockPanel Margin="10,10,10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labFightDur" Content="Durability:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                <Label x:Name="numFightDur" Content="Nn" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Width="199" HorizontalAlignment="Left">
+                            <DockPanel Margin="10,0">
+                                <Label Content="Monster name:" />
+                                <Label x:Name="monsterName" Content="Name Nn"/>
+                            </DockPanel>
+                            <DockPanel Margin="10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labEnemyHP" Content="HP:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <StackPanel>
+                                    <ProgressBar Width="100" Height="15" Foreground="#FFF11D1D" Value="100" Margin="0,6,0,0"/>
+                                    <Label x:Name="numEnemyHP" Content="Lvl" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="9.333" FontWeight="Bold"/>
+                                </StackPanel>
+                            </DockPanel>
+
+                            <DockPanel Margin="10,26,10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labEnemyAtak" Content="Atak:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <Label x:Name="numEnemyAtak" Content="Nn" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </DockPanel>
+                            <DockPanel Margin="10,10,10,0" VerticalAlignment="Top" LastChildFill="False">
+                                <Label x:Name="labEnemyDef" Content="Def:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="35"/>
+                                <Label x:Name="numEnemyDef" Content="Nn" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Quest">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Shop">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Equipment">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
